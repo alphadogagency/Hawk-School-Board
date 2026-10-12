@@ -63,7 +63,24 @@ The palette follows the supplied campaign artwork's blue and red, with a light n
 
 The initial yard-sign PDF supplied the earlier campaign logo, District 1, and a sign slogan. The current website uses Michala's October 8 replacement PNG and the confirmed district. It does not present the full print layout as a web logo or add the sign slogan to the belief statements. The email's ballot spelling is inconsistent, so only “Kevin Hawkins” is shown pending clarification. The only public contact address is the feedback email explicitly supplied by Bryan on October 12; no other email address or phone number from the correspondence is included.
 
-## Cloudflare Workers Static Assets deployment
+## Automatic deployment to the existing Cloudflare Pages site
+
+The active Git repository is `alphadogagency/Hawk-School-Board`. It was transferred from `bryguy-404`, leaving the existing Pages Git integration pointing at the old owner. The `.github/workflows/deploy-pages.yml` workflow builds and uploads directly to the existing **`hawk-school-board`** Pages project. It preserves the existing `hawk-school-board.pages.dev` URL and any domains already attached to that project. No DNS or indexing changes are part of this setup.
+
+Deployment configuration (October 12, 2026):
+
+1. The account-owned **Hawk School Board GitHub Deploy** token has only **Pages Write** permission (also called **Account → Cloudflare Pages → Edit**), scoped to the agency's Cloudflare account, with no expiration as approved by Bryan. This grants access to Pages projects in that account, not just this project; no DNS, billing, Workers, or other permissions were added.
+2. GitHub stores the token as the encrypted repository Actions secret `CLOUDFLARE_API_TOKEN` and the existing account ID as `CLOUDFLARE_ACCOUNT_ID`. Never commit credential values or put a token in a workflow file. To rotate the token, update the existing GitHub secret before revoking the old token.
+3. The old Pages integration's automatic production and preview builds are disabled so there is only one deployment path. The existing Pages project and domains remain in place. Cloudflare may still display the old repository owner or say automatic Git builds are disabled; GitHub Actions now handles deployment.
+4. Push to `main`, or run **Deploy to Cloudflare Pages** from GitHub's Actions tab with `main` selected. Check the workflow's result there and confirm the existing site serves the new content.
+
+Each push to `main` runs `npm ci`, `npm run check`, and `npm run build`, then uses the lockfile-installed Wrangler to upload `dist`. Official GitHub actions are pinned to commit SHAs; the job has read-only repository permissions, and Cloudflare credentials are supplied only to the deployment step. Runs are serialized to prevent simultaneous production uploads. Forks and manual runs from other branches cannot deploy to this project.
+
+The workflow uses `wrangler pages deploy`, **not** the legacy `npm run deploy` script below. The existing Workers config has no `pages_build_output_dir`, so Wrangler's Pages command ignores it and uses the explicitly supplied project, branch, and output directory.
+
+References: [Cloudflare's repository-transfer limitation](https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/), [deploying to existing Git-integrated Pages projects with Wrangler](https://developers.cloudflare.com/pages/configuration/git-integration/), and [GitHub Actions deployment setup](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/).
+
+## Optional Cloudflare Workers Static Assets deployment
 
 **Final launch pending. Do not connect the proposed domain or enable indexing until final approval.** Bryan has shared a Cloudflare preview at `https://hawk-school-board.pages.dev/`. The repository retains the requested Workers Static Assets configuration; no hosting migration or custom-domain setup is performed by the campaign-content revision.
 
