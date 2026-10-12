@@ -1,5 +1,14 @@
 # Hawkins for Schools verification
 
+## October 12, 2026 — foundation removal and email feedback
+
+- Removed the Hawkins Family Foundation link and its configuration at Kevin's request. Confirmed the built page contains neither the foundation name nor its URL.
+- Added header and footer email links using the public address supplied by Bryan, `dayspring89005@gmail.com`. The header reads “Email Kevin”; the footer reads “Thoughts / Comments / Suggestions.” Both are native `mailto:` links with accessible names describing email contact.
+- `npm run check` passed with zero errors, warnings, or hints. `npm run build` succeeded.
+- Chromium checks verified both recipient URLs and visible 3px keyboard focus. Checked 320, 390, 768, and 1440 CSS-pixel widths without page or element overflow, plus 200% root text without page overflow. Inspected mobile and desktop header/footer screenshots.
+- No form, message storage, mail service, or first-party client script was added. Beliefs, priorities, logo, video, and noindex settings are unchanged. No donation placeholder or unsupplied “Why I Am Running” copy was added; domain work remains deferred.
+- Limits: native mail links were inspected without opening an external email app or sending a message. Actual delivery and individual visitors' email-client setup were not tested. Layout checks used desktop Chromium with viewport emulation.
+
 ## October 8, 2026 — designer's replacement logo
 
 - Retrieved `Hawkins Logo.png` from Spark's downloaded attachment for the “Hawk Website” email shown by Bryan. Gmail search was rate-limited; the cached original attachment was available locally. Inspected the supplied 6001 × 1501 transparent PNG and confirmed its “Hawkins for Schools” wording.

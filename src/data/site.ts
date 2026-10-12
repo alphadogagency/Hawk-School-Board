@@ -16,9 +16,9 @@ export const site = {
     title: 'One-on-One with South Bend School Board District 1 Candidate Kevin Jerome Hawkins',
     publisher: 'WSBT-TV',
   },
-  foundation: {
-    label: 'Hawkins Family Foundation',
-    url: 'https://www.hawkinsfamilyfoundation.com/',
+  feedback: {
+    label: 'Thoughts / Comments / Suggestions',
+    email: 'dayspring89005@gmail.com',
   },
   beliefsHeading: 'What I believe',
   prioritiesHeading: 'Priorities',

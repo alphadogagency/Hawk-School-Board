@@ -32,6 +32,7 @@ import portrait from '../assets/kevin-hawkins.jpg';
           <li><a href="#interview">Interview</a></li>
           <li><a href="#what-i-believe">{site.beliefsHeading}</a></li>
           <li><a href="#priorities">{site.prioritiesHeading}</a></li>
+          <li><a href={`mailto:${site.feedback.email}`} aria-label="Email Kevin with thoughts, comments, or suggestions">Email Kevin</a></li>
         </ul>
       </nav>
     </header>
@@ -133,8 +134,8 @@ import portrait from '../assets/kevin-hawkins.jpg';
     <footer class="site-footer page-width flex flex-wrap items-center justify-between gap-8">
       <a class="wordmark-link" href="#top" aria-label="Hawkins for Schools — back to top"><Wordmark /></a>
       <div class="footer-links flex flex-wrap items-center gap-x-8 gap-y-3">
-        <a class="text-link foundation-link" href={site.foundation.url}>
-          {site.foundation.label}<span aria-hidden="true">↗</span>
+        <a class="text-link feedback-link" href={`mailto:${site.feedback.email}`} aria-label={`${site.feedback.label} — email Kevin`}>
+          <span>{site.feedback.label}</span><span aria-hidden="true">↗</span>
         </a>
         <a class="text-link" href="#top">Back to top<Arrow direction="up" /></a>
       </div>

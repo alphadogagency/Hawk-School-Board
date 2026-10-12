@@ -4,6 +4,8 @@ A single-page, static campaign website built with Astro, TypeScript, and Tailwin
 
 The site has no first-party client-side application JavaScript, React, CMS, authentication, database, form, analytics, or external font requests. Fonts are self-hosted from Fontsource packages. It identifies Kevin Hawkins as a candidate for South Bend Community School Corporation School Board Member representing District 1, not as a current board member or official district spokesperson.
 
+The October 12 update removes the Hawkins Family Foundation link at Kevin's request. A header “Email Kevin” link and footer “Thoughts / Comments / Suggestions” link use `mailto:dayspring89005@gmail.com`, the public address supplied by Bryan. They open the visitor's configured email app; the site does not collect or send messages. Donation setup and approved “Why I Am Running for School Board” copy remain pending. Domain work is deferred at Bryan's request.
+
 The WSBT-TV interview provided on October 6 is embedded between the introduction and beliefs, with a header navigation link and a direct YouTube fallback link. The responsive iframe uses YouTube's privacy-enhanced domain, lazy loading, native player controls, fullscreen support, and no autoplay. YouTube loads its own scripts and network resources inside the iframe. The embed's referrer policy sends the referring site's origin in the `Referer` header required by YouTube. Update the video ID, verified title, and publisher in `src/data/site.ts`.
 
 ## Requirements
@@ -48,7 +50,7 @@ This invokes `wrangler deploy --dry-run` against the existing `dist` directory. 
 
 ## Updating content and design
 
-- `src/data/site.ts`: approved copy, headings, and metadata. Keep the supplied order and wording unless the client approves revisions.
+- `src/data/site.ts`: approved copy, headings, metadata, and the public feedback email. Keep the supplied order and wording unless the client approves revisions.
 - `src/pages/index.astro`: semantic page structure and noindex metadata.
 - `src/styles/global.css`: shared color and font tokens in `@theme`, typography, responsive layout, focus states, reduced-motion and print styles.
 - `src/components/Wordmark.astro`: the current campaign logo served as a responsive image in the header and footer, with alt text matching its “Hawkins for Schools” wording.
@@ -59,7 +61,7 @@ This invokes `wrangler deploy --dry-run` against the existing `dist` directory. 
 
 The palette follows the supplied campaign artwork's blue and red, with a light neutral background; Newsreader and Manrope retain the original draft's typography. Shared design tokens make later adjustments straightforward. Font licenses are retained in `public/fonts` and included in the build.
 
-The initial yard-sign PDF supplied the earlier campaign logo, District 1, and a sign slogan. The current website uses Michala's October 8 replacement PNG and the confirmed district. It does not present the full print layout as a web logo or add the sign slogan to the belief statements. The email's ballot spelling is inconsistent, so only “Kevin Hawkins” is shown pending clarification. No private email address or phone number from the correspondence is included.
+The initial yard-sign PDF supplied the earlier campaign logo, District 1, and a sign slogan. The current website uses Michala's October 8 replacement PNG and the confirmed district. It does not present the full print layout as a web logo or add the sign slogan to the belief statements. The email's ballot spelling is inconsistent, so only “Kevin Hawkins” is shown pending clarification. The only public contact address is the feedback email explicitly supplied by Bryan on October 12; no other email address or phone number from the correspondence is included.
 
 ## Cloudflare Workers Static Assets deployment
 
